@@ -1,7 +1,7 @@
-import HomeScreen from "./src/Screens/HomeScreen";
-import AccountsSummary from "./src/Screens/AccountsSummary";
-import Transactions from "./src/Screens/Transactions";
-import Budget from "./src/Screens/Budget";
+import HomeScreen from "./app/Screens/HomeScreen";
+import AccountsSummary from "./app/Screens/AccountsSummary";
+import Transactions from "./app/Screens/Transactions";
+import Budget from "./app/Screens/Budget";
 import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
