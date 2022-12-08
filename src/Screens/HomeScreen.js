@@ -1,31 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import MyButton from '../Components/MyButton';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function HomeScreen({navigation}) {
+
+export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.top} />
-      <View style={styles.middle}>
       <Text style={styles.textStyle}>Cents!</Text>
-      <MyButton details="Cool button"></MyButton>
-      <Button title='Home Screen' color="red">
-
-      </Button>
-      <Text> HomeScreen page</Text>
-      <Button
-      title="Go to About us"
-      onPress={() =>
-        navigation.navigate('About Us', {name: 'Sirad'})
-      }
-    />
-      </View>
-      <View style={styles.bottom} />
-      
-    
+      <Text>Home</Text>
       <StatusBar style="auto" />
-      </View>
+    </View>
 
   );
 }
@@ -33,36 +17,12 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // padding: 20,
-    // marging: 10,
-    // flexDirection: "column",
-  },
-
-  top: {
-    flex: 1,
-    backgroundColor: 'grey',
-    // borderWidth: 1,
-    // borderTopLeftRadius: 5,
-    // borderTopRightRadius: 5,
-  },
-
-  middle: {
-    flex: 1,
-    backgroundColor: 'beige',
-    // borderWidth: 2,
-     alignItems: 'center',
+    backgroundColor: 'white',
+    alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  bottom: {
-    flex: 1,
-    backgroundColor: 'pink',
-    // borderWidth: 1,
-    // borderBottomLeftRadius: 5,
-    // borderBottomRightRadius: 5,
+    // padding: 20,
+    // margin: 10,
+    flexDirection: "column",
   },
 
   textStyle: {
