@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
+import MyButton from "../../src/Components/MyButton";
+
 
 export default function HomeScreen(props) {
 
@@ -15,11 +17,13 @@ export default function HomeScreen(props) {
     <Image
     source={require("../assets/centsLogo4.png")}
     style={styles.logo} />
-    <Text>Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Put Sense to Budget</Text>
     </View>
-      <View style={styles.loginButton}></View>
-      <View style={styles.registerButton}></View>
+    <View style={styles.buttonsContainer}>
+      <MyButton title="Login" />
+      <MyButton title="Register" color="secondary" />
       <StatusBar style="auto" />
+      </View>
   </ImageBackground>
   );
 }
@@ -32,11 +36,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  loginButton: {
-    width: '100%',
-    height: 70,
-    backgroundColor: '#f1c0b9',
+  buttonsContainer: {
+    padding: 20,
+    width: "100%",
   },
+  // loginButton: {
+  //   width: '100%',
+  //   height: 70,
+  //   backgroundColor: '#f1c0b9',
+// },
   logo: {
     width: 40,
     height: 40,
@@ -45,28 +53,25 @@ const styles = StyleSheet.create({
 
   logoContainer: {
     position: 'absolute',
-    top: 30,
+    top: 20,
     alignItems: 'center',
   },
-  registerButton: {
-    width: '100%',
-    height: 70,
-    backgroundColor: '#88ca5e',
-  },
-  // container: {
-  //   flex: 1,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   // padding: 20,
-  //   // margin: 10,
-  //   flexDirection: "column",
+  // registerButton: {
+  //   width: '100%',
+  //   height: 70,
+  //   backgroundColor: '#88ca5e',
   // },
 
-  textStyle: {
-    color: '#196F3D',
-    fontSize: 30,
-    fontWeight: 'normal',
-    letterSpacing: 0.25,
-    textDecorationLine: 'none',
+  tagline: {
+    fontSize: 25,
+    fontWeight: "600",
+    paddingVertical: 20,
   },
+  // textStyle: {
+  //   color: '#196F3D',
+  //   fontSize: 30,
+  //   fontWeight: 'normal',
+  //   letterSpacing: 0.25,
+  //   textDecorationLine: 'none',
+  // },
 });

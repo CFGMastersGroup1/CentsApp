@@ -2,7 +2,8 @@ import HomeScreen from "./app/Screens/HomeScreen";
 import AccountsSummary from "./app/Screens/AccountsSummary";
 import Transactions from "./app/Screens/Transactions";
 import Budget from "./app/Screens/Budget";
-import { NavigationContainer, StackActions } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
+import { View } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { customTheme } from './src/theme/Index';
@@ -13,7 +14,7 @@ export default function App(){
   const Tab = createBottomTabNavigator();
   
   return (
-    <ThemeProvider theme={customTheme}>
+    <ThemeProvider>
     <NavigationContainer>
       <Tab.Navigator>
       <Tab.Screen 
