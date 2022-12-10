@@ -1,41 +1,32 @@
-// import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity } from 'react-native';
+import colors from '../../app/config/colors';
 
-export default function MyButton(props) {
-  
-  function randomSong() {
-    var words = ["Yellow", "purple", "green", "Rock", "Paper", "Scissor"]
-    var word = words[Math.floor(Math.random()*words.length)]
-    console.log("Random word is: " + word)
-  }
+export default function MyButton({title, onPress, color= "primary" }) {
 
-  return (
-   <Pressable style={styles.buttonStyle} onPress={randomSong}>
-    <Text style={styles.textStyle}>{props.details}</Text>
-   </Pressable>
-  //  <TouchableOpacity style={styles.buttonStyle}>
-  //     <Text style={styles.textStyle}>Press Me!</Text>
-  //   </TouchableOpacity>
+  return(
+   <TouchableOpacity style={[styles.button, {backgroundColor: colors[color] }]}
+    onPress={onPress}>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+
   );
 }
 
-const styles=StyleSheet.create({
-  buttonStyle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    elevation: 3,
-    backgroundColor: '#E74C3C',
-    margin: 10,
-  },
-
-  textStyle: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.50,
-    color: 'white',
-  },
-})
+const styles = StyleSheet.create({
+  button: {
+  backgroundColor: colors.primary,
+  borderRadius: 25,
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: 15,
+  width: '100%',
+  marginVertical: 10,
+},
+text: {
+  color: colors.white,
+  fontSize: 18,
+  textTransform: 'uppercase',
+  fontWeight: 'bold',
+},
+});
