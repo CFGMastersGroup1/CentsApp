@@ -17,7 +17,7 @@ export default function HomeScreen(props) {
     <Image
     source={require("../assets/centsLogo4.png")}
     style={styles.logo} />
-    <Text style={styles.tagline}>Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
     </View>
     <View style={styles.buttonsContainer}>
       <MyButton title="Login" />
