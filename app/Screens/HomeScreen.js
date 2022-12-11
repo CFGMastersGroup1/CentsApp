@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image } from 'react-native';
 import MyButton from "../Components/MyButton";
 
 
-export default function HomeScreen(props) {
+export default function HomeScreen({ navigation }) {
 
   return (
   <ImageBackground
@@ -20,7 +22,10 @@ export default function HomeScreen(props) {
     <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
     </View>
     <View style={styles.buttonsContainer}>
-      <MyButton title="Login" />
+      <MyButton title="Login" 
+      onPress={() =>
+        navigation.navigate('Transactions')
+      } />
       <MyButton title="Register" color="secondary" />
       <StatusBar style="auto" />
       </View>
