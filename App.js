@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { View } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { customTheme } from './src/theme/Index';
+import { customTheme } from './app/theme/Index';
 import { ThemeProvider } from '@rneui/themed';
 
 export default function App(){

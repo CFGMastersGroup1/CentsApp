@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet} from 'react-native';
 
-import Screen from '../components/Screen'
+import Screen from '../Components/Screen'
 
 export default function LoginScreen(props) {
 
