@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
-import MyButton from "../../src/Components/MyButton";
+import MyButton from "../Components/MyButton";
 
 
 export default function HomeScreen(props) {
@@ -17,7 +17,7 @@ export default function HomeScreen(props) {
     <Image
     source={require("../assets/centsLogo4.png")}
     style={styles.logo} />
-    <Text style={styles.tagline}>Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
     </View>
     <View style={styles.buttonsContainer}>
       <MyButton title="Login" />
