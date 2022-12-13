@@ -9,41 +9,56 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function RegisterScreen({navigation}) {
 
- 
   const users = useSelector((state) => state.users)
+
   const [name, setName] = useState('Stranger')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [controlPassword, setControlPassword] = useState('control')
 
   const dispach = useDispatch() 
 
-  function checkIfUserexists(user, users){
-    return users.some(u => u.email===user.email && u.name===user.name)
+  function isUserExists(newUser, users){
+    return users.some(u => u.email===newUser.email && u.name===newUser.name)
   }
 
+  function checkInput(){
+    if (password==controlPassword && email!=='' && name!==''){
+      return true
+    }else{
+      Alert.alert('Upsss...','Something went wrong! Check your input')
+      return false
+    }
+  }
 
-  function register(tempUser){  
-    if(!userCheck(tempUser, users)){
-      Alert.alert('Upsss...','Email or password is invalid')
+  function getUser(){
+      var newUser = {name: name, email: email, password: password}
+      return newUser    
+  }  
+
+
+  function register(){  
+    if(!checkInput()){
+      return
+    }
+
+    newUser = getUser()
+
+    if(isUserExists(newUser, users)){
+      Alert.alert('Upsss...','That user already exists!')
       return
     }else{
-      tempUser = users.find(u => u.email===tempUser.email && u.password===tempUser.password)
-      Alert.alert('Hello!','Login sucessful! '+ tempUser.name)
-      navigation.navigate('Home') 
+      Alert.alert('Hello!','Register sucessful! Welcome '+ newUser.name)
+      navigation.navigate('Login') 
     }
     const action ={
       type: "ADD_USER",
-      payload: tempUser
+      payload: newUser
     }
     dispach(action)
   }
 
-  function getUser(){
-    var tempUser = {name: name, email: email, password: password}
-    return tempUser
-  }  
-
-
+  
 
   return (
   <ImageBackground
@@ -61,23 +76,24 @@ export default function RegisterScreen({navigation}) {
     <AppTextInput
             name='name'
             placeholder='Name'
-            onChangeText={name => setName(name)}            
+            onChangeText={n => setName(n)}            
     />
     <AppTextInput
             name='email'
             placeholder='Email'
-            onChangeText={email => setEmail(email)}            
+            onChangeText={e => setEmail(e)}            
           />
     <AppTextInput
             name='password'
             placeholder='Password'
             secureTextEntry={true} 
-            onChangeText={password => setPassword(password)}     
+            onChangeText={p => setPassword(p)}     
           />
     <AppTextInput
             name='passwordCheck'
             placeholder='Type your password again'
-            secureTextEntry={true}     
+            secureTextEntry={true}  
+            onChangeText={cp => setControlPassword(cp)}   
     /> 
         
     </View>
@@ -85,7 +101,7 @@ export default function RegisterScreen({navigation}) {
       <MyButton 
         title="Sign in" 
         color="secondary" 
-        onPress={() => register(getUser())}/>
+        onPress={() => register()}/>
          <MyButton 
         title="Cancel"
         onPress={() => navigation.navigate('Login')} />

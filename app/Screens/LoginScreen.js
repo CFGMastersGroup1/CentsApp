@@ -11,7 +11,7 @@ export default function LoginScreen({navigation}) {
 
   const user = useSelector((state) => state.user)
   const users = useSelector((state) => state.users)
-  
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -27,7 +27,7 @@ export default function LoginScreen({navigation}) {
       return
     }else{
       tempUser = users.find(u => u.email===tempUser.email && u.password===tempUser.password)
-      Alert.alert('Hello!','Login sucessful! '+ tempUser.name)
+      Alert.alert('Hello!','Login sucessful! Welcome '+ tempUser.name)
       navigation.navigate('Home') 
     }
     const action ={
@@ -61,13 +61,13 @@ export default function LoginScreen({navigation}) {
     <AppTextInput
             name='email'
             placeholder='Email'
-            onChangeText={email => setEmail(email)}            
+            onChangeText={e => setEmail(e)}            
           />
     <AppTextInput
             name='password'
             placeholder='Password'
             secureTextEntry={true} 
-            onChangeText={password => setPassword(password)}     
+            onChangeText={p => setPassword(p)}     
           />
     </View>
     <View style={styles.buttonsContainer}>

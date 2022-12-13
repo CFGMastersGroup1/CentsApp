@@ -1,13 +1,5 @@
 import LoginScreen from "./app/Screens/LoginScreen";
-import AccountsSummary from "./app/Screens/AccountsSummary";
-import Transactions from "./app/Screens/Transactions";
-import Budget from "./app/Screens/Budget";
 import { NavigationContainer} from "@react-navigation/native";
-import { Alert, View } from "react-native";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
-import { customTheme } from './app/theme/Index';
-import { ThemeProvider } from '@rneui/themed';
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -42,7 +34,7 @@ export default function App(){
     switch(action.type){
       case "ADD_USER":
         console.log('add user')
-        return state.users = {...state, users: users.push(action.payload)}
+        return state.users = {...state, users: users.concat([action.payload])}
       case "LOGIN":    
         return state.user = {...state, user: action.payload}
       case "LOG_OFF":
