@@ -1,12 +1,12 @@
+import CurrentTable from '../Components/CurrentTable';
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function Transactions() {
     return (
-        <View style={styles.container}>
-        <Text style={styles.textStyle}>Cents!</Text>
-        <Text>Transactions</Text>
-        <StatusBar style="auto" />
+        <View>
+        < CurrentTable />
       </View>
     
         );
