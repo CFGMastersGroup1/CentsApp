@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
     card: {
         borderRadius: 15,
         backgroundColor: colors.white,
-        marginBottom: 20,
-        marginTop: 20,
+        marginBottom: 10,
+        marginTop: 10,
         overflow: "hidden",
         flexDirection: "row",
     },
     detailsContainer: {
-        padding: 20,
+        padding: 10,
     },
     image: {
         width: 30,
