@@ -31,7 +31,7 @@ export default function QuoteCard() {
     return (
         <View style={styles.card}>
             <View style={styles.detailsContainer}>
-                <AppText style={styles.title}>Quote of a day</AppText>
+                <AppText style={styles.title}>Thoughts for Pence</AppText>
                 <AppText style={styles.subTitle}>{quote.sentence}</AppText>
                 <AppText style={styles.author}>{quote.author}</AppText>
             </View>
