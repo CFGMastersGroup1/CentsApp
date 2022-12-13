@@ -1,10 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View, Alert } from 'react-native';
-import { useState } from 'react';
-import { Image } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Image } from "react-native";
 import MyButton from "../Components/MyButton";
-import AppTextInput from '../Components/AppTextInput';
-import { useDispatch, useSelector } from 'react-redux';
+
+import Screen from "../Components/Screen";
 
 
 export default function LoginScreen({navigation}) {

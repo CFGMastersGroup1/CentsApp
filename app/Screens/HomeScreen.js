@@ -1,10 +1,37 @@
-import LoginScreen from "./LoginScreen";
-import AccountsSummary from "./AccountsSummary";
-import Transactions from "./Transactions";
-import Budget from "./Budget";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
-import { ThemeProvider } from '@rneui/themed';
+import { StatusBar } from 'expo-status-bar';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Image } from 'react-native';
+import MyButton from "../Components/MyButton";
+
+
+export default function HomeScreen({ navigation }) {
+
+  return (
+  <ImageBackground
+  resizeMode="cover"
+  style={styles.background}
+  source={require("../assets/moneytree2.jpg")}
+  >
+    <View style={styles.logoContainer}>
+    <Image
+    source={require("../assets/centsLogo4.png")}
+    style={styles.logo} />
+    <Text style={styles.tagline}>Cents: Making Budget Sense</Text>
+    </View>
+    <View style={styles.buttonsContainer}>
+      <MyButton title="Login" 
+      onPress={() =>
+        navigation.navigate('Transactions')
+      } />
+      <MyButton title="Register" color="secondary" />
+      <StatusBar style="auto" />
+      </View>
+  </ImageBackground>
+  );
+}
 
 export default function HomeScreen({navigation}){
     const Tab = createBottomTabNavigator();
