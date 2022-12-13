@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
     <Image
     source={require("../assets/centsLogo4.png")}
     style={styles.logo} />
-    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Cents: Making Budget Sense</Text>
     </View>
     <View style={styles.buttonsContainer}>
       <MyButton title="Login" 
