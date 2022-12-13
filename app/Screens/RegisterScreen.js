@@ -7,42 +7,58 @@ import AppTextInput from '../Components/AppTextInput';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-export default function LoginScreen({navigation}) {
+export default function RegisterScreen({navigation}) {
 
-  const user = useSelector((state) => state.user)
   const users = useSelector((state) => state.users)
 
+  const [name, setName] = useState('Stranger')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [controlPassword, setControlPassword] = useState('control')
 
   const dispach = useDispatch() 
 
-  function userCheck(user, users){
-    return users.some(u => u.email===user.email && u.password===user.password)
+  function isUserExists(newUser, users){
+    return users.some(u => u.email===newUser.email && u.name===newUser.name)
   }
 
-  function signIn(tempUser){  
-    if(!userCheck(tempUser, users)){
-      Alert.alert('Upsss...','Email or password is invalid')
+  function checkInput(){
+    if (password==controlPassword && email!=='' && name!==''){
+      return true
+    }else{
+      Alert.alert('Upsss...','Something went wrong! Check your input')
+      return false
+    }
+  }
+
+  function getUser(){
+      var newUser = {name: name, email: email, password: password}
+      return newUser    
+  }  
+
+
+  function register(){  
+    if(!checkInput()){
+      return
+    }
+
+    newUser = getUser()
+
+    if(isUserExists(newUser, users)){
+      Alert.alert('Upsss...','That user already exists!')
       return
     }else{
-      tempUser = users.find(u => u.email===tempUser.email && u.password===tempUser.password)
-      Alert.alert('Hello!','Login sucessful! Welcome '+ tempUser.name)
-      navigation.navigate('Home') 
+      Alert.alert('Hello!','Register sucessful! Welcome '+ newUser.name)
+      navigation.navigate('Login') 
     }
     const action ={
-      type: "LOGIN",
-      payload: tempUser
+      type: "ADD_USER",
+      payload: newUser
     }
     dispach(action)
   }
 
-  function getUser(){
-    var tempUser = {name: '', email: email, password: password}
-    return tempUser
-  }  
-
-
+  
 
   return (
   <ImageBackground
@@ -54,10 +70,14 @@ export default function LoginScreen({navigation}) {
       <Image
       source={require("../assets/centsLogo4.png")}
       style={styles.logo} />
-      <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
-      <Text style={styles.tagline}>Hello {user.name}!</Text>
+      <Text style={styles.tagline}>Hello Stranger!</Text>
     </View>
     <View style={styles.textInputContainer}>
+    <AppTextInput
+            name='name'
+            placeholder='Name'
+            onChangeText={n => setName(n)}            
+    />
     <AppTextInput
             name='email'
             placeholder='Email'
@@ -69,15 +89,22 @@ export default function LoginScreen({navigation}) {
             secureTextEntry={true} 
             onChangeText={p => setPassword(p)}     
           />
+    <AppTextInput
+            name='passwordCheck'
+            placeholder='Type your password again'
+            secureTextEntry={true}  
+            onChangeText={cp => setControlPassword(cp)}   
+    /> 
+        
     </View>
     <View style={styles.buttonsContainer}>
       <MyButton 
-        title="Login"
-        onPress={() => signIn(getUser())} />
-      <MyButton 
-        title="Register" 
-        color="secondary"
-        onPress={()=> navigation.navigate('Register')} />
+        title="Sign in" 
+        color="secondary" 
+        onPress={() => register()}/>
+         <MyButton 
+        title="Cancel"
+        onPress={() => navigation.navigate('Login')} />
       <StatusBar style="auto" />
     </View>
   </ImageBackground>
