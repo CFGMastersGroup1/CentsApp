@@ -16,11 +16,15 @@ export default function LoginScreen({navigation}) {
   const [password, setPassword] = useState('')
 
   const dispach = useDispatch() 
-
+  
+  //function checking if user exist in our dummy data base 
+  // we pass user -> date from our input fields, and check it in users (our dummy db)
   function userCheck(user, users){
     return users.some(u => u.email===user.email && u.password===user.password)
   }
 
+  //function for sign in, it passes user data and make validation of them
+  //if user is in our dummy db action LOGIN perform
   function signIn(tempUser){  
     if(!userCheck(tempUser, users)){
       Alert.alert('Upsss...','Email or password is invalid')
@@ -37,6 +41,7 @@ export default function LoginScreen({navigation}) {
     dispach(action)
   }
 
+  // getting data from input fields and returnig temporary user object
   function getUser(){
     var tempUser = {name: '', email: email, password: password}
     return tempUser
@@ -50,37 +55,37 @@ export default function LoginScreen({navigation}) {
     style={styles.background}
     source={require("../assets/moneytree2.jpg")}
   >
-    <View style={styles.logoContainer}>
-      <Image
+  <View style={styles.logoContainer}>
+    <Image
       source={require("../assets/centsLogo4.png")}
       style={styles.logo} />
-      <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
-      <Text style={styles.tagline}>Hello {user.name}!</Text>
-    </View>
-    <View style={styles.textInputContainer}>
+    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Hello {user.name}!</Text>
+  </View>
+  <View style={styles.textInputContainer}>
     <AppTextInput
             name='email'
             placeholder='Email'
             onChangeText={e => setEmail(e)}            
-          />
+    />
     <AppTextInput
             name='password'
             placeholder='Password'
             secureTextEntry={true} 
             onChangeText={p => setPassword(p)}     
-          />
-    </View>
-    <View style={styles.buttonsContainer}>
-      <MyButton 
+    />
+  </View>
+  <View style={styles.buttonsContainer}>
+    <MyButton 
         title="Login"
         onPress={() => signIn(getUser())} />
-      <MyButton 
+    <MyButton 
         title="Register" 
         color="secondary"
         onPress={()=> navigation.navigate('Register')} />
-      <StatusBar style="auto" />
-    </View>
-  </ImageBackground>
+    <StatusBar style="auto" />
+  </View>
+</ImageBackground>
   );
 }
 
@@ -90,40 +95,32 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: "center",
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   buttonsContainer: {
     padding: 20,
-    width: "100%",
+    width: "100%"
   },
 
   textInputContainer:{
     padding: 20,
-    width: "100%",
+    width: "100%"
   },
 
   logo: {
     width: 40,
-    height: 40,
-    // top: 10,
+    height: 40
   },
 
   logoContainer: {
     position: 'absolute',
     top: 20,
-    alignItems: 'center',
+    alignItems: 'center'
   },
 
   tagline: {
     fontSize: 25,
     fontWeight: "600",
-    paddingVertical: 20,
-  },
-  // textStyle: {
-  //   color: '#196F3D',
-  //   fontSize: 30,
-  //   fontWeight: 'normal',
-  //   letterSpacing: 0.25,
-  //   textDecorationLine: 'none',
-  // },
+    paddingVertical: 20
+  }
 });

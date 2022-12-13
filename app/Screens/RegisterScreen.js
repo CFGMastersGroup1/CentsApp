@@ -18,10 +18,12 @@ export default function RegisterScreen({navigation}) {
 
   const dispach = useDispatch() 
 
+  // checkin if new user is in our dummy db
   function isUserExists(newUser, users){
     return users.some(u => u.email===newUser.email && u.name===newUser.name)
   }
 
+  //basic validation of input
   function checkInput(){
     if (password==controlPassword && email!=='' && name!==''){
       return true
@@ -31,12 +33,14 @@ export default function RegisterScreen({navigation}) {
     }
   }
 
+  // getting data from input fields and returnig new user object
   function getUser(){
       var newUser = {name: name, email: email, password: password}
       return newUser    
   }  
 
-
+  //function for register
+  //if user isn't in our dummy db action ADD_USER perform
   function register(){  
     if(!checkInput()){
       return
