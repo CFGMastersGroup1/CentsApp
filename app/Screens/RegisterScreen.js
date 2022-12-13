@@ -7,21 +7,22 @@ import AppTextInput from '../Components/AppTextInput';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-export default function LoginScreen({navigation}) {
+export default function RegisterScreen({navigation}) {
 
-  const user = useSelector((state) => state.user)
+ 
   const users = useSelector((state) => state.users)
-  
+  const [name, setName] = useState('Stranger')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const dispach = useDispatch() 
 
-  function userCheck(user, users){
-    return users.some(u => u.email===user.email && u.password===user.password)
+  function checkIfUserexists(user, users){
+    return users.some(u => u.email===user.email && u.name===user.name)
   }
 
-  function signIn(tempUser){  
+
+  function register(tempUser){  
     if(!userCheck(tempUser, users)){
       Alert.alert('Upsss...','Email or password is invalid')
       return
@@ -31,14 +32,14 @@ export default function LoginScreen({navigation}) {
       navigation.navigate('Home') 
     }
     const action ={
-      type: "LOGIN",
+      type: "ADD_USER",
       payload: tempUser
     }
     dispach(action)
   }
 
   function getUser(){
-    var tempUser = {name: '', email: email, password: password}
+    var tempUser = {name: name, email: email, password: password}
     return tempUser
   }  
 
@@ -54,10 +55,14 @@ export default function LoginScreen({navigation}) {
       <Image
       source={require("../assets/centsLogo4.png")}
       style={styles.logo} />
-      <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
-      <Text style={styles.tagline}>Hello {user.name}!</Text>
+      <Text style={styles.tagline}>Hello Stranger!</Text>
     </View>
     <View style={styles.textInputContainer}>
+    <AppTextInput
+            name='name'
+            placeholder='Name'
+            onChangeText={name => setName(name)}            
+    />
     <AppTextInput
             name='email'
             placeholder='Email'
@@ -69,15 +74,21 @@ export default function LoginScreen({navigation}) {
             secureTextEntry={true} 
             onChangeText={password => setPassword(password)}     
           />
+    <AppTextInput
+            name='passwordCheck'
+            placeholder='Type your password again'
+            secureTextEntry={true}     
+    /> 
+        
     </View>
     <View style={styles.buttonsContainer}>
       <MyButton 
-        title="Login"
-        onPress={() => signIn(getUser())} />
-      <MyButton 
-        title="Register" 
-        color="secondary"
-        onPress={()=> navigation.navigate('Register')} />
+        title="Sign in" 
+        color="secondary" 
+        onPress={() => register(getUser())}/>
+         <MyButton 
+        title="Cancel"
+        onPress={() => navigation.navigate('Login')} />
       <StatusBar style="auto" />
     </View>
   </ImageBackground>

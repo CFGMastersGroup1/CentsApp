@@ -1,77 +1,119 @@
-import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { Image } from 'react-native';
-import MyButton from "../Components/MyButton";
+import LoginScreen from "./LoginScreen";
+import AccountsSummary from "./AccountsSummary";
+import Transactions from "./Transactions";
+import Budget from "./Budget";
+import { NavigationContainer} from "@react-navigation/native";
+import { Alert, View } from "react-native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { ThemeProvider } from '@rneui/themed';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
-export default function HomeScreen(props) {
 
-  return (
-  <ImageBackground
-  resizeMode="cover"
-  style={styles.background}
-  source={require("../assets/moneytree2.jpg")}
-  >
-    <View style={styles.logoContainer}>
-    <Image
-    source={require("../assets/centsLogo4.png")}
-    style={styles.logo} />
-    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
-    </View>
-    <View style={styles.buttonsContainer}>
-      <MyButton title="Login" />
-      <MyButton title="Register" color="secondary" />
-      <StatusBar style="auto" />
-      </View>
-  </ImageBackground>
-  );
-}
+export default function HomeScreen({navigation}){
+    const Tab = createBottomTabNavigator();
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: "center",
-    width: '100%',
-    height: '100%',
-  },
-  buttonsContainer: {
-    padding: 20,
-    width: "100%",
-  },
-  // loginButton: {
-  //   width: '100%',
-  //   height: 70,
-  //   backgroundColor: '#f1c0b9',
-// },
-  logo: {
-    width: 40,
-    height: 40,
-    // top: 10,
-  },
-
-  logoContainer: {
-    position: 'absolute',
-    top: 20,
-    alignItems: 'center',
-  },
-  // registerButton: {
-  //   width: '100%',
-  //   height: 70,
-  //   backgroundColor: '#88ca5e',
-  // },
-
-  tagline: {
-    fontSize: 25,
-    fontWeight: "600",
-    paddingVertical: 20,
-  },
-  // textStyle: {
-  //   color: '#196F3D',
-  //   fontSize: 30,
-  //   fontWeight: 'normal',
-  //   letterSpacing: 0.25,
-  //   textDecorationLine: 'none',
-  // },
-});
+    // const users = [
+    //     {
+    //       email:'kate@cents.com',
+    //       password:'kate'
+    //     },
+    //     {
+    //       email:'sirad@cents.com',
+    //       password:'sirad'
+    //     },
+    //     {
+    //       email:'amy@cents.com',
+    //       password:'amy'
+    //     }
+    //   ];
+    
+    //   function userCheck(user, users){
+    //     return users.some(u => u.email===user.email && u.password===user.password)
+    //   }
+    
+    //   const emptyUser = {email:'', password:''}
+    
+    //   function userReducer(state, action){
+    //     switch(action.type){
+    //       case "ADD_USER":
+    //         console.log('add user')
+    //         return state.user = {...state, user: action.payload}
+    //       case "LOGIN":
+    //         var user = action.payload
+    //         if(!userCheck(user, users)){
+    //           Alert.alert('Invalid User','Your email or password is invalid!')
+    //           return state
+    //         }
+    //         else{
+    //           Alert.alert('Login complete!')
+    //           navigation.navigate('HomeScreen')
+    //         }        
+    //         console.log(user, userCheck(user, users))
+    //         return state.user = {...state, user: action.payload}
+    
+    //       case "LOG_OFF":
+    //         return state.user ={emptyUser}
+    //       default:
+    //         console.log('default')
+    //         return state
+    //     }
+    //   }
+    
+    //   const initilaState = {user: emptyUser}
+    
+    //   const store = createStore(userReducer,initilaState);
+ 
+    return(   
+     
+      <ThemeProvider>
+        <Tab.Navigator>
+        <Tab.Screen 
+        name="Accounts Summary" 
+        component={AccountsSummary}
+        options={{
+          tabBarLabel: 'Accounts',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="card-outline" color={color} size={size}/>
+          ),
+        }}
+        />
+        
+        <Tab.Screen 
+        name="Transactions" 
+        component={Transactions}
+        options={{
+          tabBarLabel: 'Transactions',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="pricetags-outline" color={color} size={size}/>
+          ),
+        }}
+        />
+        <Tab.Screen 
+        name="Budget" 
+        component={Budget}
+        options={{
+          tabBarLabel: 'Budget',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="pie-chart-outline" color={color} size={size}/>
+          ),
+        }}
+        />
+        <Tab.Screen 
+        name="Login"
+        component={LoginScreen}
+        options={{
+          tabBarLabel: 'Log off',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" color={color} size={size}/>
+          ),
+       }}
+         />
+        </Tab.Navigator>
+      </ThemeProvider>  
+      
+    )
+  }
