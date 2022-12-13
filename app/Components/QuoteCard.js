@@ -1,16 +1,39 @@
-import React from "react";
-import { View, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Image, Text } from 'react-native';
 
 import colors from "../../app/config/colors";
 import AppText from "./AppText";
 
+
 export default function QuoteCard() {
+    const [quote, setQuote] = useState({'sentence':'', 'author':''});
+
+    const fechQuote = async () =>{
+        fetch('https://zenquotes.io/api/today/',{
+          method: 'POST',
+          headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json'
+          }
+        })
+        .then(response => {return response.json()})
+        .then(q => setQuote({
+            'sentence': q[0].q,
+            'author': q[0].a
+        }))
+        .catch(err =>{console.log('Error: '+err)})
+      };
+
+      useEffect(() => {
+        fechQuote();
+      },[]);
+
     return (
         <View style={styles.card}>
-            <Image style={styles.image} source={require("../assets/moneytree2.jpg")} />
             <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>Quote of the Day</AppText>
-            <AppText style={styles.subTitle}>API here</AppText>
+                <AppText style={styles.title}>Quote of a day</AppText>
+                <AppText style={styles.subTitle}>{quote.sentence}</AppText>
+                <AppText style={styles.author}>{quote.author}</AppText>
             </View>
         </View>
     )
@@ -28,16 +51,17 @@ const styles = StyleSheet.create({
     detailsContainer: {
         padding: 20,
     },
-    image: {
-        width: 120,
-        height: 90,
-        marginTop: 20,
-        marginLeft: 10,
-        justifyContent: 'center',
-        marginBottom: 20,
-    },
     subTitle: {
         color: colors.secondary,
+        fontStyle: "italic",
+        fontFamily: 'serif'
+    },
+    author: {
+        paddingTop: 10,
+        color: colors.medium,
+        textAlign: 'right',
+        fontSize: 15
+
     },
     title: {
         marginBottom: 7,
