@@ -6,16 +6,17 @@ export default function LogOffScreen({navigation}){
     const user = {name:'Stranger', email:'', password:''}
 
     function logOff(){
+        navigation.navigate('Login')
         const action ={
             type: "LOG_OFF",
             payload: user
           }
           dispach(action)
-          navigation.navigate('Login') 
-    }
+    };
 
 
     logOff()
+
     return(null)
 
 }
