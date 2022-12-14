@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./app/Screens/HomeScreen";
 import RegisterScreen from "./app/Screens/RegisterScreen";
+import LogOffScreen from "./app/Screens/LogOffScreen";
 
 
 export default function App(){
@@ -38,7 +39,9 @@ export default function App(){
       case "LOGIN":    
         return state.user = {...state, user: action.payload}
       case "LOG_OFF":
-        return state.user ={emptyUser}
+        console.log('logging off')
+        console.log(action.payload.name)
+        return state.user = {...state, user: action.payload}
       default:
         console.log('default')
         return state
@@ -67,7 +70,12 @@ export default function App(){
             component={HomeScreen}
             options={{headerShown:false}}
           ></Stack.Screen>
-        </Stack.Navigator> 
+          <Stack.Screen
+            name="Log off"
+            component={LogOffScreen}
+            options={{headerShown:false}}
+          ></Stack.Screen> 
+          </Stack.Navigator>
         </NavigationContainer> 
       </Provider>  
    );

@@ -1,10 +1,11 @@
-import LoginScreen from "./LoginScreen";
 import AccountsSummary from "./AccountsSummary";
 import Transactions from "./Transactions";
 import Budget from "./Budget";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemeProvider } from '@rneui/themed';
+import LogOffScreen from "./LogOffScreen";
+
 
 export default function HomeScreen({navigation}){
     const Tab = createBottomTabNavigator();
@@ -43,8 +44,8 @@ export default function HomeScreen({navigation}){
                 }}
             />
             <Tab.Screen 
-                name="Login"
-                component={LoginScreen}
+                name="Log off"
+                component={LogOffScreen}
                 options={{
                     tabBarLabel: 'Log off',
                     tabBarIcon: ({ color, size }) => (
