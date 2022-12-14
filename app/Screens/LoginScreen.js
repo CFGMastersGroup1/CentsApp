@@ -59,7 +59,7 @@ export default function LoginScreen({navigation}) {
     <Image
       source={require("../assets/centsLogo4.png")}
       style={styles.logo} />
-    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Cents: Making Budget Sense</Text>
     <Text style={styles.tagline}>Hello {user.name}!</Text>
   </View>
   <View style={styles.textInputContainer}>

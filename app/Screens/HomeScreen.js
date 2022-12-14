@@ -48,7 +48,7 @@ export default function HomeScreen({navigation}){
                 options={{
                     tabBarLabel: 'Log off',
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home-outline" color={color} size={size}/>
+                        <Ionicons name="log-out-outline" color={color} size={size}/>
                     ),
                 }}
              />
