@@ -49,28 +49,26 @@ export default function App(){
 
   const store = createStore(userReducer,initilaState);
 
-  
-  
+    
   return (
     <Provider store={store}>
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name = "Login"
-          component ={LoginScreen}
-        ></Stack.Screen>
-        <Stack.Screen
-          name = 'Register'
-          component={RegisterScreen}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Home" 
-          component={HomeScreen}
-          options={{headerShown:false}}
-        ></Stack.Screen>
-      </Stack.Navigator> 
-      </NavigationContainer> 
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name = "Login"
+            component ={LoginScreen}
+          ></Stack.Screen>
+          <Stack.Screen
+            name = 'Register'
+            component={RegisterScreen}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="Home" 
+            component={HomeScreen}
+            options={{headerShown:false}}
+          ></Stack.Screen>
+        </Stack.Navigator> 
+        </NavigationContainer> 
       </Provider>  
- 
-  );
+   );
 }
