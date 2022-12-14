@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { StyleSheet, Image } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import { ImageBackground, StyleSheet, Text, View, Alert } from 'react-native';
+import { useState } from 'react';
+import { Image } from 'react-native';
 import MyButton from "../Components/MyButton";
-
-import Screen from "../Components/Screen";
+import AppTextInput from '../Components/AppTextInput';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function LoginScreen({navigation}) {
@@ -57,7 +59,7 @@ export default function LoginScreen({navigation}) {
     <Image
       source={require("../assets/centsLogo4.png")}
       style={styles.logo} />
-    <Text style={styles.tagline}>Cents: Put Sense to Budget</Text>
+    <Text style={styles.tagline}>Cents: Making Budget Sense</Text>
     <Text style={styles.tagline}>Hello {user.name}!</Text>
   </View>
   <View style={styles.textInputContainer}>

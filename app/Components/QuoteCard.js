@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     subTitle: {
         color: colors.secondary,
         fontStyle: "italic",
-        fontFamily: 'serif'
+        // fontFamily: 'serif',
     },
     author: {
         paddingTop: 10,
