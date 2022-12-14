@@ -15,10 +15,10 @@ const mockTransactions = [{Date: '01/01/22', Payee: 'Costa', Category: 'Eating O
                           {Date: '05/01/22', Payee: 'TFGM', Category: 'Tram', Out: '1.85', In: '0.00'},
                           {Date: '05/01/22', Payee: 'eON', Category: 'Gas', Out: '75.00', In: '0.00'},
                           {Date: '07/01/22', Payee: 'TFGM', Category: 'Tram', Out: '1.85', In: '0.00'},
-                          {Date: '08/01/22', Payee: 'TFGM', Category: 'Tram', Out: '1.85', In: '0.00'},
-                          {Date: '10/01/22', Payee: 'TFGM', Category: 'Tram', Out: '1.85', In: '0.00'},
-                          {Date: '10/01/22', Payee: 'TFGM', Category: 'Tram', Out: '1.85', In: '0.00'},
-                          {Date: '10/01/22', Payee: 'TFGM', Category: 'Tram', Out: '1.85', In: '0.00'},
+                          {Date: '08/01/22', Payee: 'Wilkos', Category: 'Nails', Out: '1.25', In: '0.00'},
+                          {Date: '10/01/22', Payee: 'Virgin', Category: 'Internet', Out: '33.30', In: '0.00'},
+                          {Date: '10/01/22', Payee: '3', Category: 'Mobile', Out: '15.00', In: '0.00'},
+                          {Date: '10/01/22', Payee: 'Next', Category: 'Clothing', Out: '55.00', In: '0.00'},
     
 ]
 
