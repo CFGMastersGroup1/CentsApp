@@ -6,11 +6,13 @@ We used React Native and Redux to build this app as part of our +Masters course 
 This app is our final assement for the course.
 
 Features:
-expenses input
+inspirational quote
 budget input 
 multiple accounts
 spending tracker - how much of your budget is gone
 
-Installation:
- 
+What do I do with this project:
 
+clone the repository in the desired folder
+using XCODE simulator feature on Mac or any simulator of your choice open the app and explore it
+send us fededback and ideas for improvement
