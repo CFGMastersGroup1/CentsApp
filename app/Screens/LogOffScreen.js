@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 export default function LogOffScreen({navigation}){
@@ -14,8 +15,10 @@ export default function LogOffScreen({navigation}){
           dispach(action)
     };
 
-
-    logOff()
+    useEffect(()=>{
+        logOff()
+    });
+    
 
     return(null)
 
