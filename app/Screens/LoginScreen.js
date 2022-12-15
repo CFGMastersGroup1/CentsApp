@@ -5,6 +5,8 @@ import { Image } from 'react-native';
 import MyButton from "../Components/MyButton";
 import AppTextInput from '../Components/AppTextInput';
 import { useDispatch, useSelector } from 'react-redux';
+import { color } from '@rneui/base';
+import colors from '../config/colors';
 
 
 export default function LoginScreen({navigation}) {
@@ -60,7 +62,7 @@ export default function LoginScreen({navigation}) {
       source={require("../assets/centsLogo4.png")}
       style={styles.logo} />
     <Text style={styles.tagline}>Cents: Making Budget Sense</Text>
-    <Text style={styles.tagline}>Hello {user.name}!</Text>
+    <Text style={styles.tagline2}>Hello, {user.name}!</Text>
   </View>
   <View style={styles.textInputContainer}>
     <AppTextInput
@@ -119,8 +121,15 @@ const styles = StyleSheet.create({
   },
 
   tagline: {
-    fontSize: 25,
-    fontWeight: "600",
-    paddingVertical: 20
+    fontSize: 28,
+    fontWeight: "500",
+    paddingVertical: 30,
+    // color: colors.darkGreen,
+  },
+  tagline2: {
+    fontSize: 20,
+    fontWeight: "400",
+    // paddingVertical: 10,
+    
   }
 });

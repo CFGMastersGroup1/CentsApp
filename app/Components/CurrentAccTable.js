@@ -19,7 +19,6 @@ const mockTransactions = [{Date: '01/01/22', Payee: 'Costa', Category: 'Eating O
                           {Date: '10/01/22', Payee: 'Virgin', Category: 'Internet', Out: '33.30', In: '0.00'},
                           {Date: '10/01/22', Payee: '3', Category: 'Mobile', Out: '15.00', In: '0.00'},
                           {Date: '10/01/22', Payee: 'Next', Category: 'Clothing', Out: '55.00', In: '0.00'},
-    
 ]
 
 useEffect(() => {setTransactions(mockTransactions)}, [])
