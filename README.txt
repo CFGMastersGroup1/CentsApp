@@ -13,6 +13,6 @@ spending tracker - how much of your budget is gone
 
 What do I do with this project:
 
-clone the repository in the desired folder
+clone the repository into the desired folder
 using XCODE simulator feature on Mac or any simulator of your choice open the app and explore it
 send us fededback and ideas for improvement
